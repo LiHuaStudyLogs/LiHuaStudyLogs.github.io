@@ -7,7 +7,15 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-cn</language>
         <copyright>陈雨轩 | MyFirstBlog</copyright>
-        <lastBuildDate>Tue, 28 May 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://LiHuaStudyLogs.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 23 Nov 2025 19:33:23 +0800</lastBuildDate><atom:link href="https://LiHuaStudyLogs.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>LiHua_Hugo搭建Blog——我利用Hugo框架搭建的第一篇博客</title>
+        <link>https://LiHuaStudyLogs.github.io/p/lihua_hugo%E6%90%AD%E5%BB%BAblog%E6%88%91%E5%88%A9%E7%94%A8hugo%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</link>
+        <pubDate>Sun, 23 Nov 2025 19:33:23 +0800</pubDate>
+        
+        <guid>https://LiHuaStudyLogs.github.io/p/lihua_hugo%E6%90%AD%E5%BB%BAblog%E6%88%91%E5%88%A9%E7%94%A8hugo%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>文档</title>
         <link>https://LiHuaStudyLogs.github.io/archives/</link>
         <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
