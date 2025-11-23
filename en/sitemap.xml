@@ -3,6 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://LiHuaStudyLogs.github.io/en/categories/</loc>
+    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
@@ -14,6 +15,51 @@
                 href="https://LiHuaStudyLogs.github.io/en/categories/"
                 />
   </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/en/p/test-chinese/</loc>
+    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/en/post/</loc>
+    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://LiHuaStudyLogs.github.io/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://LiHuaStudyLogs.github.io/en/post/"
+                />
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/en/categories/test/</loc>
+    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://LiHuaStudyLogs.github.io/categories/test/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://LiHuaStudyLogs.github.io/en/categories/test/"
+                />
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/en/</loc>
+    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://LiHuaStudyLogs.github.io/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://LiHuaStudyLogs.github.io/en/"
+                />
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/en/categories/%E6%B5%8B%E8%AF%95/</loc>
+    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://LiHuaStudyLogs.github.io/en/tags/</loc>
     <xhtml:link
                 rel="alternate"
@@ -24,18 +70,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://LiHuaStudyLogs.github.io/en/tags/"
-                />
-  </url><url>
-    <loc>https://LiHuaStudyLogs.github.io/en/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://LiHuaStudyLogs.github.io/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://LiHuaStudyLogs.github.io/en/"
                 />
   </url>
 </urlset>
