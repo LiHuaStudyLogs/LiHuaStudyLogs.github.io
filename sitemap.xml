@@ -1,18 +1,83 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <sitemap>
-    <loc>https://LiHuaStudyLogs.github.io/zh-cn/sitemap.xml</loc>
-    
-      <lastmod>2025-11-23T19:33:23+08:00</lastmod>
-    
-  </sitemap>
-  
-  <sitemap>
-    <loc>https://LiHuaStudyLogs.github.io/en/sitemap.xml</loc>
-    
-      <lastmod>2020-09-09T00:00:00+00:00</lastmod>
-    
-  </sitemap>
-  
-</sitemapindex>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://LiHuaStudyLogs.github.io/</loc>
+    <lastmod>2025-11-23T19:33:23+08:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/p/lihua_hugo%E6%90%AD%E5%BB%BAblog%E6%88%91%E5%88%A9%E7%94%A8hugo%E6%A1%86%E6%9E%B6%E6%90%AD%E5%BB%BA%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2025-11-23T19:33:23+08:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/post/</loc>
+    <lastmod>2025-11-23T19:33:23+08:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/categories/</loc>
+    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/p/test-chinese/</loc>
+    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/categories/test/</loc>
+    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/categories/%E6%B5%8B%E8%AF%95/</loc>
+    <lastmod>2020-09-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/page/</loc>
+    <lastmod>2019-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/archives/</loc>
+    <lastmod>2019-05-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/tags/css/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/tags/html/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/tags/markdown/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/p/markdown-syntax-guide/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/categories/syntax/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/tags/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/categories/themes/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/tags/themes/</loc>
+    <lastmod>2019-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/p/placeholder-text/</loc>
+    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/tags/tag-with-whitespaces/</loc>
+    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/categories/test-with-whitespaces/</loc>
+    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/tags/text/</loc>
+    <lastmod>2019-03-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/p/math-typesetting/</loc>
+    <lastmod>2019-03-08T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/tags/emoji/</loc>
+    <lastmod>2019-03-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/p/emoji-support/</loc>
+    <lastmod>2019-03-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/%E5%85%B3%E4%BA%8E/</loc>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/%E5%85%B6%E4%BB%96%E5%B7%A5%E5%85%B7%E9%93%BE%E6%8E%A5/</loc>
+  </url><url>
+    <loc>https://LiHuaStudyLogs.github.io/search/</loc>
+  </url>
+</urlset>
