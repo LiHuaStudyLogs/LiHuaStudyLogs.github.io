@@ -26,7 +26,7 @@ languages:
         weight: 2
         params:
             sidebar:
-                subtitle: 欢迎大家参观我的blogs，这篇博客主要是追踪我的学习路径
+                subtitle: 欢迎大家参观我的blogs，这篇博客主要分为两部分：1. 我的项目介绍 | 2.我的学习笔记 ,这是一片记录性质的Blog 
     # ar:
     #     languageName: عربي
     #     languagedirection: rtl

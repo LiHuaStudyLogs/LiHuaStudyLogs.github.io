@@ -2,7 +2,7 @@
 date = '2025-12-01T23:41:08+08:00'
 draft = false
 title = 'Html和css文件设计语法'
-weight = 71
+weight = 151
 description = 'html文件是浏览器能读懂的语法，文件可以在浏览器打开 | css是html文件的配置文件，配置html文件中元素的样式'
 +++
 
@@ -23,7 +23,7 @@ description = 'html文件是浏览器能读懂的语法，文件可以在浏览�
 * 元素的逻辑：兄弟关系 + 父子关系
 * 文档流原则：宽占一行，高度由内容撑开
 * link标签 ，实现css文件嵌入html：
-`<link href=".\相对路径-->指向css文件">替代原本的<style></style>部分 | 标签内部<style="标签内置">`
+`<link rel="stylesheet" href=".\相对路径-->指向css文件">替代原本的<style></style>部分 | 标签内部<style="标签内置">`
 
 ### html的标签——元素
 ##### 标签
