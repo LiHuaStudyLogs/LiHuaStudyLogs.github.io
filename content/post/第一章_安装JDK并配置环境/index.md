@@ -1,7 +1,7 @@
 +++
 date = '2025-12-01T19:23:54+08:00'
 draft = false
-weight = 1
+weight = -49
 title = '第一章 安装JDK并配置环境'
 description = '工具性质文章-安装教程，是开启技术学习的前置必要条件'
 +++

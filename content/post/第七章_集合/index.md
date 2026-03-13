@@ -1,7 +1,7 @@
 +++
 date = '2025-12-17T01:30:23+08:00'
 draft = false
-weight = 8
+weight = -40
 title = '第七章_集合'
 description = '笔记性质文章/标志性质的文章-学习集合这一【容器】，标志这早期后端java的正式结束'
 +++

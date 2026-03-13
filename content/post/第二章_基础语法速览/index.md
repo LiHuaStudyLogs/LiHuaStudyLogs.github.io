@@ -1,7 +1,7 @@
 +++
 date = '2025-12-03T11:22:11+08:00'
 draft = false
-weight = 3
+weight = -47
 title = '第二章_基础语法速览'
 description = '笔记性质文章-聚焦前期的散点知识语法'
 +++
