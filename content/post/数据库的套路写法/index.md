@@ -1,7 +1,7 @@
 +++
 date = '2025-12-01T19:20:55+08:00'
 draft = false
-weight = -99
+weight = -38
 title = '数据库的套路性操作'
 description = '记一些数据库相关的套路'
 +++
@@ -81,11 +81,11 @@ description = '记一些数据库相关的套路'
 
             ps = conn.prepareStatement(sql_02);
             ps.setInt(1,88);
-            rs_02 = ps.executeQuery();
-            int num = ps.executeUpdate(sql);
+            int rs_02 = ps.executeUpdate();
             if(rs_02 > 0){
                 System.out.println("操作成功了");
             }
+
         }catch(Exception e){
             throw e;
         } finally {
@@ -116,5 +116,67 @@ description = '记一些数据库相关的套路'
     // 拿到查询的结果
     if(rs.next()){
         System.out.println("该数据已经存在");
+    }
+```
+
+***
+
+* **配置文件的使用**    
+如果只是**程序里的数据**，我们想要增加它的复用性，创建**工具类**就行    
+但是由于**数据库**这个第三方软件的加入，我们的程序中的数据库地址、密码、用户名、驱动的地址，这些数据都是会因为**数据库**的不同而改变的    
+所以我们要用到**配置文件**，在外部改变这些数据，同时结合**工具类**把这些数据作用大到程序内     
+
+* **先设置一个正常的工具类：**
+```java
+    public final class Test{
+        private Test(){
+
+        }
+
+        public static final  XXX_YYY = 100;
+        // 静态常量
+        public static void xxxYyy() {
+        // 静态方法
+        }    
+        // 这些通用数据都是【程序内数据】
+    }
+```
+
+* **设置配置文件：**    
+在项目的目录下新建文件夹config
+这里面放的文件必须是用.properties后缀结尾（也就是配置文件）
+```properties
+ key = values
+    <!-- 用这个结构存储数据 -->
+
+    url = jdbc:mysql://127.0.0.1:3306/数据库 
+    driver = com.mysql.cj.jdbc.Driver
+    <!-- 字符串不需要使用`""`引号 -->
+```
+
+* **在【工具类】基础上，获取我们的【配置文件】的数据:**
+```java
+    public final class Test{
+        static String driver;
+        static String url;
+        // 工具类创建【静态属性】
+
+        static{
+            Properties prop = new Properties();
+            // 创建配置文件Properties对象
+            prop.load(new FileInputStream("config/具体的配置文件"));
+            // 导入【输入流】对象，也就是拿到配置文件的数据    
+            driver = prop.getProperty("键名");
+            // 依赖【键名】拿到【值】，并存入工具类的属性
+        }
+
+        private Test(){
+
+        }
+        public static final  XXX_YYY = 100;
+        public static void xxxYyy() {
+
+        }    
+// 在【静态代码块】里面执行的语句，如果要处理异常，你只能用异常的捕获，因为跟main方法一样，再往上抛就是抛给jvm虚拟机
     }
 ```

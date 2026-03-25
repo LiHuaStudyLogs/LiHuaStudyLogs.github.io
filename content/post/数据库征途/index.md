@@ -1,7 +1,7 @@
 +++
 date = '2025-12-20T15:15:09+08:00'
 draft = false
-weight = 70
+weight = -37
 title = '数据库征途'
 description = '标志着我们开始学习数据库'
 +++

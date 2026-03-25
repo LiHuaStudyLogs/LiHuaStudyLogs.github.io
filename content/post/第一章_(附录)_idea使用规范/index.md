@@ -87,7 +87,11 @@ IDEA的功能非常多，包括自动生成代码 、 快捷键 、 插件市场
 ```java
     ArrayList<Object> xxxYyy = new ArrayList<>();
 ```
-`集合对象.iterator().var` -> 简写创建迭代器对象
+`集合对象.iterator().var` -> 简写创建迭代器对象     
+`对象.成员方法().var` -> 简写变量存储**返回值**   
+```java
+    Iterator<Object> it = al.iterator(); 
+```
 
 `psvm + 回车` -> 快捷构建方法声明  
 
