@@ -14,7 +14,7 @@ weight: 1       # You can add weight to some posts to override the default sorti
 ---
 
 ## 这是向导篇文章，我介绍一下我的Blog：    
-**创建这个Blog，专门填补编程方向的知识点，和本地的【编程学习】文件夹笔记组成的 https://github.com/LiHuaStudyLogs/LiHuaStudyLogs.github.io Github用户站点仓库**
+**创建这个Blog，专门填补编程方向的知识点，了解如何让搭建这个Blog，可以访问【编程学习】文件夹笔记存储的仓库 https://github.com/LiHuaStudyLogs/code**
 ## 阅读我Blog的解析：
 **规范你怎么阅读我的Blog**    
 
