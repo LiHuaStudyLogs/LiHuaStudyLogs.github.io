@@ -1,7 +1,8 @@
 ---
 title: Shortcodes
-description: Useful shortcodes that can be used in Markdown
-date: 2023-08-25 00:00:00+0000
+description: Useful shortcodes that can be used in Markdown.stack主题提供的，能直接呈现视频、音频等复杂的内容，有需要时可查看
+date: 2026-11-07 
+weight: 3
 image: cover.jpg
 ---
 

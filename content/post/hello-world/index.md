@@ -1,20 +1,48 @@
 ---
-title: Hello World
-description: Welcome to Hugo Theme Stack
+title: Hello! audience, plaese read me!
+description: Welcome to LiHua's Blog
 slug: hello-world
-date: 2022-03-06 00:00:00+0000
-image: cover.jpg
+date: 2026-11-07 
+image: cover.jpg 
 categories:
-    - Example Category
+    - 我Blog的总目录
+    - Markdown and Front Matter
+    - shortcodes
 tags:
-    - Example Tag
+    - Blog导航
 weight: 1       # You can add weight to some posts to override the default sorting (date descending)
 ---
 
-Welcome to Hugo theme Stack. This is your first post. Edit or delete it, then start writing!
+## 这是向导篇文章，我介绍一下我的Blog：    
+**创建这个Blog，专门填补编程方向的知识点，和本地的【编程学习】文件夹笔记组成的 https://github.com/LiHuaStudyLogs/LiHuaStudyLogs.github.io Github用户站点仓库**
+## 阅读我Blog的解析：
+**规范你怎么阅读我的Blog**    
 
-For more information about this theme, check the documentation: https://stack.jimmycai.com/
+### 标签和目录：   
+software - 出现软件相关     
+code - 编程知识相关    
+skill - 学习某个特定的知识技能
+weight - 固有标签，方便设置下一篇文章的权重
 
-Want a site like this? Check out [hugo-theme-stack-stater](https://github.com/CaiJimmy/hugo-theme-stack-starter)
+### 页面
+links - 找到在Blog里提到的项目对应的网址
+archives - 上方有所有catalog标签，下方有所有文章
 
-> Photo by [Pawel Czerwinski](https://unsplash.com/@pawel_czerwinski) on [Unsplash](https://unsplash.com/)
+### 文章
+**文章外**   
+看标题，简介：介绍为什么要学这个知识点？（尽量白话）     
+**文章内**    
+看右侧目录栏，快速定位文章内容     
+比较专业的简介
+
+## 其他 
+
+For more information about this theme, check the documentation: https://stack.jimmycai.com/      
+**这个主题相关知识**
+
+Want a site like this? Check out [hugo-theme-stack-stater](https://github.com/CaiJimmy/hugo-theme-stack-starter)      
+**这个主题在github上面的仓库**
+
+
+
+> Photo by [Pawel Czerwinski](https://unsplash.com/@pawel_czerwinski) on [Unsplash](https://unsplash.com/)图片获取
