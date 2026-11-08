@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <img align="right" width="150" alt="logo" src="https://user-images.githubusercontent.com/5889006/190859553-5b229b4f-c476-4cbd-928f-890f5265ca4c.png">
 
 # Hugo Theme Stack Starter Template
@@ -45,3 +46,11 @@ hugo mod tidy
 ## Deploy to another static page hostings
 
 Check official Hugo documentation: https://gohugo.io/host-and-deploy/
+=======
+# LiHuaStudyLogs.github.io
+## 仓库介绍       
+**这个仓库本身就是我的【用户站点】，我用来存放我的个人Blog（存放编程专项知识）和我的编程文件夹（电脑相关的知识**
+### 功能      
+1. **帮你入门编程**      
+2. **快速搭建自己的电脑工作环境**
+>>>>>>> 055930d4f98013ee4261022c304d69a1442a74c5

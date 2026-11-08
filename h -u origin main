@@ -1,0 +1,484 @@
+[1mdiff --git a/.devcontainer/Dockerfile b/.devcontainer/Dockerfile[m
+[1mdeleted file mode 100644[m
+[1mindex 960e283..0000000[m
+[1m--- a/.devcontainer/Dockerfile[m
+[1m+++ /dev/null[m
+[36m@@ -1,38 +0,0 @@[m
+[31m-# Update the NODE_VERSION arg in docker-compose.yml to pick a Node version: 18, 16, 14[m
+[31m-ARG NODE_VERSION=16[m
+[31m-FROM mcr.microsoft.com/devcontainers/javascript-node:${NODE_VERSION}[m
+[31m-[m
+[31m-# VARIANT can be either 'hugo' for the standard version or 'hugo_extended' for the extended version.[m
+[31m-ARG VARIANT=hugo[m
+[31m-# VERSION can be either 'latest' or a specific version number[m
+[31m-ARG VERSION=latest[m
+[31m-[m
+[31m-# Download Hugo[m
+[31m-RUN apt-get update && apt-get install -y ca-certificates openssl git curl && \[m
+[31m-    rm -rf /var/lib/apt/lists/* && \[m
+[31m-    case ${VERSION} in \[m
+[31m-    latest) \[m
+[31m-    export VERSION=$(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest | grep "tag_name" | awk '{print substr($2, 3, length($2)-4)}') ;;\[m
+[31m-    esac && \[m
+[31m-    echo ${VERSION} && \[m
+[31m-    case $(uname -m) in \[m
+[31m-    aarch64) \[m
+[31m-    export ARCH=ARM64 ;; \[m
+[31m-    *) \[m
+[31m-    export ARCH=64bit ;; \[m
+[31m-    esac && \[m
+[31m-    echo ${ARCH} && \[m
+[31m-    wget -O ${VERSION}.tar.gz https://github.com/gohugoio/hugo/releases/download/v${VERSION}/${VARIANT}_${VERSION}_Linux-${ARCH}.tar.gz && \[m
+[31m-    tar xf ${VERSION}.tar.gz && \[m
+[31m-    mv hugo /usr/bin/hugo[m
+[31m-[m
+[31m-# Hugo dev server port[m
+[31m-EXPOSE 1313[m
+[31m-[m
+[31m-# [Optional] Uncomment this section to install additional OS packages you may want.[m
+[31m-#[m
+[31m-# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \[m
+[31m-#     && apt-get -y install --no-install-recommends <your-package-list-here>[m
+[31m-[m
+[31m-# [Optional] Uncomment if you want to install more global node packages[m
+[31m-# RUN sudo -u node npm install -g <your-package-list-here>[m
+\ No newline at end of file[m
+[1mdiff --git a/.devcontainer/devcontainer.json b/.devcontainer/devcontainer.json[m
+[1mdeleted file mode 100644[m
+[1mindex 47c5f09..0000000[m
+[1m--- a/.devcontainer/devcontainer.json[m
+[1m+++ /dev/null[m
+[36m@@ -1,45 +0,0 @@[m
+[31m-{[m
+[31m-    "name": "Hugo (Community)",[m
+[31m-    "build": {[m
+[31m-        "dockerfile": "Dockerfile",[m
+[31m-        "args": {[m
+[31m-            // Update VARIANT to pick hugo variant.[m
+[31m-            // Example variants: hugo, hugo_extended[m
+[31m-            // Rebuild the container if it already exists to update.[m
+[31m-            "VARIANT": "hugo_extended",[m
+[31m-            // Update VERSION to pick a specific hugo version.[m
+[31m-            // Example versions: latest, 0.73.0, 0,71.1[m
+[31m-            // Rebuild the container if it already exists to update.[m
+[31m-            "VERSION": "latest",[m
+[31m-            // Update NODE_VERSION to pick the Node.js version: 12, 14[m
+[31m-            "NODE_VERSION": "22"[m
+[31m-        }[m
+[31m-    },[m
+[31m-    // Configure tool-specific properties.[m
+[31m-    "customizations": {[m
+[31m-        // Configure properties specific to VS Code.[m
+[31m-        "vscode": {[m
+[31m-            // Set *default* container specific settings.json values on container create.[m
+[31m-            "settings": {[m
+[31m-                "html.format.templating": true[m
+[31m-            },[m
+[31m-            // Add the IDs of extensions you want installed when the container is created.[m
+[31m-            "extensions": [[m
+[31m-                "tamasfe.even-better-toml",[m
+[31m-                "davidanson.vscode-markdownlint"[m
+[31m-            ][m
+[31m-        }[m
+[31m-    },[m
+[31m-    // Use 'forwardPorts' to make a list of ports inside the container available locally.[m
+[31m-    "forwardPorts": [[m
+[31m-        1313[m
+[31m-    ],[m
+[31m-    // Use 'postCreateCommand' to run commands after the container is created.[m
+[31m-    // "postCreateCommand": "uname -a",[m
+[31m-    // Set `remoteUser` to `root` to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.[m
+[31m-    "remoteUser": "node",[m
+[31m-    "features": {[m
+[31m-        "ghcr.io/devcontainers/features/go:1": {},[m
+[31m-        "ghcr.io/prplecake/devcontainer-features/dart-sass:1": {}[m
+[31m-    }[m
+[31m-}[m
+\ No newline at end of file[m
+[1mdiff --git a/.github/workflows/deploy.yml b/.github/workflows/deploy.yml[m
+[1mdeleted file mode 100644[m
+[1mindex 65e42b1..0000000[m
+[1m--- a/.github/workflows/deploy.yml[m
+[1m+++ /dev/null[m
+[36m@@ -1,105 +0,0 @@[m
+[31m-name: Build and deploy[m
+[31m-on:[m
+[31m-  push:[m
+[31m-    branches:[m
+[31m-      - main[m
+[31m-      - master[m
+[31m-  workflow_dispatch:[m
+[31m-permissions:[m
+[31m-  contents: read[m
+[31m-  pages: write[m
+[31m-  id-token: write[m
+[31m-concurrency:[m
+[31m-  group: pages[m
+[31m-  cancel-in-progress: false[m
+[31m-defaults:[m
+[31m-  run:[m
+[31m-    shell: bash[m
+[31m-jobs:[m
+[31m-  build:[m
+[31m-    runs-on: ubuntu-latest[m
+[31m-    env:[m
+[31m-      DART_SASS_VERSION: 1.97.1[m
+[31m-      GO_VERSION: 1.25.5[m
+[31m-      HUGO_VERSION: 0.154.2[m
+[31m-      NODE_VERSION: 24.12.0[m
+[31m-      TZ: Europe/Oslo[m
+[31m-    steps:[m
+[31m-      - name: Checkout[m
+[31m-        uses: actions/checkout@v6[m
+[31m-        with:[m
+[31m-          submodules: recursive[m
+[31m-          fetch-depth: 0[m
+[31m-      - name: Setup Go[m
+[31m-        uses: actions/setup-go@v6[m
+[31m-        with:[m
+[31m-          go-version: ${{ env.GO_VERSION }}[m
+[31m-          cache: false[m
+[31m-      - name: Setup Node.js[m
+[31m-        uses: actions/setup-node@v6[m
+[31m-        with:[m
+[31m-          node-version: ${{ env.NODE_VERSION }}[m
+[31m-      - name: Setup Pages[m
+[31m-        id: pages[m
+[31m-        uses: actions/configure-pages@v6[m
+[31m-      - name: Create directory for user-specific executable files[m
+[31m-        run: |[m
+[31m-          mkdir -p "${HOME}/.local"[m
+[31m-      - name: Install Dart Sass[m
+[31m-        run: |[m
+[31m-          curl -sLJO "https://github.com/sass/dart-sass/releases/download/${DART_SASS_VERSION}/dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz"[m
+[31m-          tar -C "${HOME}/.local" -xf "dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz"[m
+[31m-          rm "dart-sass-${DART_SASS_VERSION}-linux-x64.tar.gz"[m
+[31m-          echo "${HOME}/.local/dart-sass" >> "${GITHUB_PATH}"[m
+[31m-      - name: Setup Hugo[m
+[31m-        uses: peaceiris/actions-hugo@v3[m
+[31m-        with:[m
+[31m-          hugo-version: 'latest'[m
+[31m-          extended: true[m
+[31m-      - name: Verify installations[m
+[31m-        run: |[m
+[31m-          echo "Dart Sass: $(sass --version)"[m
+[31m-          echo "Go: $(go version)"[m
+[31m-          echo "Hugo: $(hugo version)"[m
+[31m-          echo "Node.js: $(node --version)"[m
+[31m-      - name: Install Node.js dependencies[m
+[31m-        run: |[m
+[31m-          [[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true[m
+[31m-      - name: Configure Git[m
+[31m-        run: |[m
+[31m-          git config core.quotepath false[m
+[31m-      - name: Cache restore[m
+[31m-        id: cache-restore[m
+[31m-        uses: actions/cache/restore@v5[m
+[31m-        with:[m
+[31m-          path: ${{ runner.temp }}/hugo_cache[m
+[31m-          key: hugo-${{ github.run_id }}[m
+[31m-          restore-keys:[m
+[31m-            hugo-[m
+[31m-      - name: Build the site[m
+[31m-        run: |[m
+[31m-          hugo \[m
+[31m-            --gc \[m
+[31m-            --minify \[m
+[31m-            --baseURL "${{ steps.pages.outputs.base_url }}/" \[m
+[31m-            --cacheDir "${{ runner.temp }}/hugo_cache"[m
+[31m-      - name: Cache save[m
+[31m-        id: cache-save[m
+[31m-        uses: actions/cache/save@v5[m
+[31m-        with:[m
+[31m-          path: ${{ runner.temp }}/hugo_cache[m
+[31m-          key: ${{ steps.cache-restore.outputs.cache-primary-key }}[m
+[31m-      - name: Upload artifact[m
+[31m-        uses: actions/upload-pages-artifact@v5[m
+[31m-        with:[m
+[31m-          path: ./public[m
+[31m-  deploy:[m
+[31m-    environment:[m
+[31m-      name: github-pages[m
+[31m-      url: ${{ steps.deployment.outputs.page_url }}[m
+[31m-    runs-on: ubuntu-latest[m
+[31m-    needs: build[m
+[31m-    steps:[m
+[31m-      - name: Deploy to GitHub Pages[m
+[31m-        id: deployment[m
+[31m-        uses: actions/deploy-pages@v5[m
+[1mdiff --git a/.github/workflows/update-theme.yml b/.github/workflows/update-theme.yml[m
+[1mdeleted file mode 100644[m
+[1mindex 9861182..0000000[m
+[1m--- a/.github/workflows/update-theme.yml[m
+[1m+++ /dev/null[m
+[36m@@ -1,38 +0,0 @@[m
+[31m-name: Update theme[m
+[31m-[m
+[31m-# Controls when the workflow will run[m
+[31m-on:[m
+[31m-  schedule:[m
+[31m-    # Update theme automatically everyday at 00:00 UTC[m
+[31m-    - cron: "0 0 * * *"[m
+[31m-  # Allows you to run this workflow manually from the Actions tab[m
+[31m-  workflow_dispatch:[m
+[31m-[m
+[31m-jobs:[m
+[31m-  update-theme:[m
+[31m-    runs-on: ubuntu-latest[m
+[31m-[m
+[31m-    permissions:[m
+[31m-      # Give the default GITHUB_TOKEN write permission to commit and push the[m
+[31m-      # added or changed files to the repository.[m
+[31m-      contents: write[m
+[31m-    [m
+[31m-    steps:[m
+[31m-      - uses: actions/checkout@v6[m
+[31m-[m
+[31m-      - name: Setup Hugo[m
+[31m-        uses: peaceiris/actions-hugo@v3[m
+[31m-        with:[m
+[31m-          hugo-version: 'latest'[m
+[31m-          extended: true[m
+[31m-[m
+[31m-      - name: Update theme[m
+[31m-        run: hugo mod get -u[m
+[31m-[m
+[31m-      - name: Tidy go.mod, go.sum[m
+[31m-        run: hugo mod tidy[m
+[31m-[m
+[31m-      - name: Commit changes[m
+[31m-        uses: stefanzweifel/git-auto-commit-action@v7[m
+[31m-        with:[m
+[31m-          commit_message: "CI: Update theme"[m
+[1mdiff --git a/.gitignore b/.gitignore[m
+[1mdeleted file mode 100644[m
+[1mindex 25a904d..0000000[m
+[1m--- a/.gitignore[m
+[1m+++ /dev/null[m
+[36m@@ -1,5 +0,0 @@[m
+[31m-public[m
+[31m-resources[m
+[31m-.hugo_build.lock[m
+[31m-.DS_Store[m
+[31m-assets/jsconfig.json[m
+\ No newline at end of file[m
+[1mdiff --git a/.gitmodules b/.gitmodules[m
+[1mdeleted file mode 100644[m
+[1mindex fd89a6e..0000000[m
+[1m--- a/.gitmodules[m
+[1m+++ /dev/null[m
+[36m@@ -1,3 +0,0 @@[m
+[31m-[submodule "themes/stack"][m
+[31m-	path = themes/stack[m
+[31m-	url = git@github.com:CaiJimmy/hugo-theme-stack.git[m
+[1mdiff --git a/.vscode/tasks.json b/.vscode/tasks.json[m
+[1mdeleted file mode 100644[m
+[1mindex 5f702e8..0000000[m
+[1m--- a/.vscode/tasks.json[m
+[1m+++ /dev/null[m
+[36m@@ -1,28 +0,0 @@[m
+[31m-{[m
+[31m-    // See https://go.microsoft.com/fwlink/?LinkId=733558[m
+[31m-    // for the documentation about the tasks.json format[m
+[31m-    "version": "2.0.0",[m
+[31m-    "tasks": [[m
+[31m-        {[m
+[31m-            "label": "Serve Drafts",[m
+[31m-            "type": "shell",[m
+[31m-            "command": "hugo server -D",[m
+[31m-            "group": {[m
+[31m-                "kind": "test",[m
+[31m-                "isDefault": true[m
+[31m-            },[m
+[31m-            "isBackground": true,[m
+[31m-            "problemMatcher": [][m
+[31m-        },[m
+[31m-        {[m
+[31m-            "label": "Build",[m
+[31m-            "type": "shell",[m
+[31m-            "command": "hugo",[m
+[31m-            "group": {[m
+[31m-                "kind": "build",[m
+[31m-                "isDefault": true[m
+[31m-            },[m
+[31m-            "problemMatcher": [][m
+[31m-        }[m
+[31m-    ][m
+[31m-}[m
+\ No newline at end of file[m
+[1mdiff --git a/LICENSE b/LICENSE[m
+[1mdeleted file mode 100644[m
+[1mindex 4b5f721..0000000[m
+[1m--- a/LICENSE[m
+[1m+++ /dev/null[m
+[36m@@ -1,21 +0,0 @@[m
+[31m-MIT License[m
+[31m-[m
+[31m-Copyright (c) 2021 Jimmy Cai[m
+[31m-[m
+[31m-Permission is hereby granted, free of charge, to any person obtaining a copy[m
+[31m-of this software and associated documentation files (the "Software"), to deal[m
+[31m-in the Software without restriction, including without limitation the rights[m
+[31m-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell[m
+[31m-copies of the Software, and to permit persons to whom the Software is[m
+[31m-furnished to do so, subject to the following conditions:[m
+[31m-[m
+[31m-The above copyright notice and this permission notice shall be included in all[m
+[31m-copies or substantial portions of the Software.[m
+[31m-[m
+[31m-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR[m
+[31m-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,[m
+[31m-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE[m
+[31m-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER[m
+[31m-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,[m
+[31m-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE[m
+[31m-SOFTWARE.[m
+[1mdiff --git a/README.md b/README.md[m
+[1mindex 16e1b86..beadcbf 100644[m
+[1m--- a/README.md[m
+[1m+++ b/README.md[m
+[36m@@ -1,47 +1,2 @@[m
+[31m-<img align="right" width="150" alt="logo" src="https://user-images.githubusercontent.com/5889006/190859553-5b229b4f-c476-4cbd-928f-890f5265ca4c.png">[m
+[31m-[m
+[31m-# Hugo Theme Stack Starter Template[m
+[31m-[m
+[31m-This is a quick start template for [Hugo theme Stack](https://github.com/CaiJimmy/hugo-theme-stack). It uses [Hugo modules](https://gohugo.io/hugo-modules/) feature to load the theme.[m
+[31m-[m
+[31m-It comes with a basic theme structure and configuration. GitHub action has been set up to deploy the theme to a public GitHub page automatically. Also, there's a cron job to update the theme automatically everyday.[m
+[31m-[m
+[31m-## Video Tutorial[m
+[31m-[m
+[31m-In case you got lost during the setup process, here's a video tutorial that setups a new Hugo site using this template, and deploys it to GitHub Pages: https://www.youtube.com/watch?v=8qDdQQ6Ifxo[m
+[31m-[m
+[31m-## Get started[m
+[31m-[m
+[31m-1. Click *Use this template*, and create your repository as `<username>.github.io` on GitHub. (You can also use a different repository name, but then the resulting website will be available at `https://<username>.github.io/<repository-name>`. )[m
+[31m-![Step 1](https://user-images.githubusercontent.com/5889006/156916624-20b2a784-f3a9-4718-aa5f-ce2a436b241f.png)[m
+[31m-[m
+[31m-2. Once the repository is created, create a GitHub codespace associated with it.[m
+[31m-![Create codespace](https://user-images.githubusercontent.com/5889006/156916672-43b7b6e9-4ffb-4704-b4ba-d5ca40ffcae7.png)[m
+[31m-[m
+[31m-3. While waiting for the codespace to be created, go to `Settings` -> `Pages` of your newly created repository, and set `Build and deployment` -> `Source` to `GitHub Actions`.[m
+[31m-![Change build and deployment source](https://github.com/user-attachments/assets/192459bf-25d8-441e-8029-c108d789e449)[m
+[31m-[m
+[31m-4. After the codespace is created, you can test that the site is built successfully by running `hugo server` in the terminal and see your new site in action. [m
+[31m-[m
+[31m-5. Check `config` folder for the configuration files. You can edit them to suit your needs. Make sure to update the `baseurl` property in `config/_default/config.toml` to your site's URL. For example, if your new repository is named `my-blog`, then the `baseurl` should be `https://<username>.github.io/my-blog/`.[m
+[31m-[m
+[31m-6. Once you're done editing the site, just commit it and push it. GitHub action will deploy the site automatically to GitHub page asociated with the repository.[m
+[31m-[m
+[31m----[m
+[31m-[m
+[31m-In case you don't want to use GitHub codespace, you can also run this template in your local machine. **You need to install Git, Go and Hugo extended locally.** For more information, check official Hugo documentation: https://gohugo.io/installation/[m
+[31m-[m
+[31m-## Update theme manually[m
+[31m-[m
+[31m-Run:[m
+[31m-[m
+[31m-```bash[m
+[31m-hugo mod get -u github.com/CaiJimmy/hugo-theme-stack/v4[m
+[31m-hugo mod tidy[m
+[31m-```[m
+[31m-[m
+[31m-> This starter template has been configured with `v4` version of theme. Due to the limitation of Go module, once the `v4` or up version of theme is released, you need to update the theme manually. (Modifying `config/module.toml` file)[m
+[31m-[m
+[31m-## Deploy to another static page hostings[m
+[31m-[m
+[31m-Check official Hugo documentation: https://gohugo.io/host-and-deploy/[m
+[32m+[m[32m# LiHuaStudyLogs.github.io[m
+[32m+[m[32m我的用户站点，存放我的个人Blog[m
+[1mdiff --git a/assets/img/ODF.png b/assets/img/ODF.png[m
+[1mdeleted file mode 100644[m
+[1mindex 562d081..0000000[m
+Binary files a/assets/img/ODF.png and /dev/null differ
+[1mdiff --git a/assets/img/avatar.png b/assets/img/avatar.png[m
+[1mdeleted file mode 100644[m
+[1mindex bab4bde..0000000[m
+Binary files a/assets/img/avatar.png and /dev/null differ
+[1mdiff --git a/assets/img/favicon.png b/assets/img/favicon.png[m
+[1mdeleted file mode 100644[m
+[1mindex e53125d..0000000[m
+Binary files a/assets/img/favicon.png and /dev/null differ
+[1mdiff --git a/assets/scss/custom.scss b/assets/scss/custom.scss[m
+[1mdeleted file mode 100644[m
+[1mindex 942c2bb..0000000[m
+[1m--- a/assets/scss/custom.scss[m
+[1m+++ /dev/null[m
+[36m@@ -1,3 +0,0 @@[m
+[31m-/*[m
+[31m-    You can add your own custom styles here.[m
+[31m-*/[m
+\ No newline at end of file[m
+[1mdiff --git a/config/_default/config.toml b/config/_default/config.toml[m
+[1mdeleted file mode 100644[m
+[1mindex 77f1392..0000000[m
+[1m--- a/config/_default/config.toml[m
+[1m+++ /dev/null[m
+[36m@@ -1,22 +0,0 @@[m
+[31m-# Change baseurl before deploy[m
+[31m-baseurl = "https://example.org/"[m
+[31m-locale  = "zh-cn"[m
+[31m-title   = "LiHua-Blog"[m
+[31m-[m
+[31m-# 加上这一行，强制使用本地 themes 文件夹里的主题[m
+[31m-theme = "stack"[m
+[31m-[m
+[31m-# Theme i18n support[m
+[31m-defaultContentLanguage = "zh-cn"[m
+[31m-[m
+[31m-# Set hasCJKLanguage to true if DefaultContentLanguage is in [zh-cn ja ko][m
+[31m-hasCJKLanguage = true[m
+[31m-[m
+[31m-# Change it to your Disqus shortname before using[m
+[31m-disqusShortname = "hugo-theme-stack"[m
+[31m-[m
+[31m-[pagination][m
+[31m-    pagerSize = 5[m
+[31m-[m
+[31m-[outputs][m
+[31m-    home = ["HTML", "RSS", "JSON"][m
+\ No newline at end of file[m
+[1mdiff --git a/config/_default/markup.toml b/config/_default/markup.toml[m
+[1mdeleted file mode 100644[m
+[1mindex fe9edec..0000000[m
+[1m--- a/config/_default/markup.toml[m
+[1m+++ /dev/null[m
+[36m@@ -1,26 +0,0 @@[m
+[31m-# Markdown renderer configuration[m
+[31m-[goldmark.renderer][m
+[31m-    unsafe = true[m
+[31m-[m
+[31m-[goldmark.extensions.passthrough][m
+[31m-    enable = true[m
+[31m-[m
+[31m-    # LaTeX math support[m
+[31m-    # https://gohugo.io/content-management/mathematics/[m
+[31m-    [goldmark.extensions.passthrough.delimiters][m
+[31m-        block  = [['\[', '\]'], ['$$', '$$']][m
+[31m-        inline = [['\(', '\)']][m
+[31m-[m
+[31m-[tableOfContents][m
+[31m-    endLevel   = 4[m
+[31m-    ordered    = true[m
+[31m-    startLevel = 2[m
+[31m-[m
+[31m-[highlight][m
+[31m-    noClasses          = false[m
+[31m-    codeFences         = true[m
+[31m-    guessSyntax        = true[m
+[31m-    lineNoStart        = 1[m
+[31m-    lineNos            = true[m
+[31m-    lineNumbersInTable = true[m
+[31m-    tabWidth           = 4[m
+[1mdiff --git a/config/_default/menu.toml b/config/_default/menu.toml[m
+[1mdeleted file mode 100644[m
+[1mindex 15fd9dd..0000000[m
+[1m--- a/config/_default/menu.toml[m
+[1m+++ /dev/null[m
+[36m@@ -1,14 +0,0 @@[m
+[31m-[m
+[31m-[m
+[31m-[[main]][m
+[31m-    identifier = "archives"[m
+[31m-    name = "Archives"[m
+[31m-    url = "/archives
